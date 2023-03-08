@@ -1,0 +1,424 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>5gjn9OQcjoYsjql-gt-4233532-2023-03-08T06:18:25.917Z::tf.xml</types1:EntryId>
+      <types1:Name>CDC_SFDC_Update-1</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>geethak1</types1:CreatedBy>
+      <types1:CreationDate>2023-03-08T06:18:26Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>geethak1</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-08T06:18:32Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.CDC_SFDC_Update-1/CDC_SFDC_Update-1.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="CDC_SFDC_Update"
+                   name="CDC_SFDC_Update-1"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Contract_Update" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MT-SFDC-Contract-Update</option>
+                  </options>
+               </field>
+               <field description="" name="CustomAllDataType__c_Update" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MT-SFDC-CustomAllDataType--c-Update</option>
+                  </options>
+               </field>
+               <field description="" name="Asset_Update" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:MT-SFDC-Asset-Update</option>
+                  </options>
+               </field>
+               <field description="" name="Task_Update" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MT-SFDC-Task-Update</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedUsers>
+                     <user>geethak1</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="j3wg4fhg" targetId="j3wg4fhf"/>
+               </start>
+               <container id="j3wg4fhf" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="j3wg4fhj">
+                     <container id="l7r7zcpe" type="parallel">
+                        <title>Parallel Paths 3</title>
+                        <flow id="l7r7zcph">
+                           <eventContainer id="l7r7zcqh">
+                              <service id="l7r7zcps">
+                                 <title>Asset_Update</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_Asset_Update</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">dadfv45DqANl2Ps2N2bvMh</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="MT-SFDC-Asset-Update">temp.Asset_Update</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Asset_Update/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Task_Status">Task Status</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/Error_Message">Error Message</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field" to="temp.Asset_Update/output/FirstErrorCode">First Error Code</operation>
+                                 </serviceOutput>
+                              </service>
+                              <events>
+                                 <catch faultField="temp.Asset_Update/fault"
+                                        id="kx8sz4yk"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.Asset_Update/fault"
+                                        id="kx8sz4yl"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <link id="l7r7zcpi" targetId="l7r7zcpe" type="containerLink"/>
+                        </flow>
+                        <flow id="l7r7zcpk">
+                           <eventContainer id="l7r7zcrj">
+                              <service id="l7r7zcqr">
+                                 <title>Task_Update</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_Task_Update</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">921oBcolt08eAc9QkMZxAQ</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="MT-SFDC-Task-Update">temp.Task_Update</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Task_Update/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Task_Status">Task Status</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Task_Update/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Task_Update/output/Error_Message">Error Message</operation>
+                                    <operation source="field" to="temp.Task_Update/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field" to="temp.Task_Update/output/FirstErrorCode">First Error Code</operation>
+                                 </serviceOutput>
+                              </service>
+                              <events>
+                                 <catch faultField="temp.Task_Update/fault"
+                                        id="l7r7zcrh"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.Task_Update/fault"
+                                        id="l7r7zcri"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <link id="l7r7zcpl" targetId="l7r7zcpe" type="containerLink"/>
+                        </flow>
+                        <link id="l7r7zcpg" targetId="l7r7zcph" type="containerLink"/>
+                        <link id="l7r7zcpj" targetId="l7r7zcpk" type="containerLink"/>
+                     </container>
+                     <link id="j3wg4fhk" targetId="j3wg4fhf" type="containerLink"/>
+                  </flow>
+                  <flow id="j3wg4fhm">
+                     <container id="kx8sz4xq" type="parallel">
+                        <title>Parallel Paths 2</title>
+                        <flow id="kx8sz4xt">
+                           <eventContainer id="kx8sz519">
+                              <service id="kx8sz4ye">
+                                 <title>CustomAllDataType__c_Update</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_CustomAllDataType__c_Update</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">evU1FGtV8MCcw688CGvX6d</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="MT-SFDC-CustomAllDataType--c-Update">temp.CustomAllDataType__c_Update</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Task_Status">Task Status</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.CustomAllDataType__c_Update/output/End_Time">End Time</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/Error_Message">Error Message</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field"
+                                               to="temp.CustomAllDataType__c_Update/output/FirstErrorCode">First Error Code</operation>
+                                 </serviceOutput>
+                              </service>
+                              <events>
+                                 <catch faultField="temp.CustomAllDataType__c_Update/fault"
+                                        id="kx8sz517"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.CustomAllDataType__c_Update/fault"
+                                        id="kx8sz518"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <link id="kx8sz4xu" targetId="kx8sz4xq" type="containerLink"/>
+                        </flow>
+                        <flow id="kx8sz4xw">
+                           <eventContainer id="kx8sz4zy">
+                              <service id="kx8sz4y2">
+                                 <title>Contract_Update</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_Contract_Update</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">7EZCn9NJMylhveisJw0q4m</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="MT-SFDC-Contract-Update">temp.Contract_Update</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Contract_Update/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Task_Status">Task Status</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/Error_Message">Error Message</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field" to="temp.Contract_Update/output/FirstErrorCode">First Error Code</operation>
+                                 </serviceOutput>
+                              </service>
+                              <events>
+                                 <catch faultField="temp.Contract_Update/fault"
+                                        id="kx8sz4zw"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.Contract_Update/fault"
+                                        id="kx8sz4zx"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <link id="kx8sz4xx" targetId="kx8sz4xq" type="containerLink"/>
+                        </flow>
+                        <link id="kx8sz4xs" targetId="kx8sz4xt" type="containerLink"/>
+                        <link id="kx8sz4xv" targetId="kx8sz4xw" type="containerLink"/>
+                     </container>
+                     <link id="j3wg4fhn" targetId="j3wg4fhf" type="containerLink"/>
+                  </flow>
+                  <link id="j3wg4fhi" targetId="j3wg4fhj" type="containerLink"/>
+                  <link id="j3wg4fhl" targetId="j3wg4fhm" type="containerLink"/>
+                  <link id="j3wg4fhh" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-Contract-Update"
+                              isByCopy="true"
+                              name="MT-SFDC-Contract-Update">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-CustomAllDataType--c-Update"
+                              isByCopy="true"
+                              name="MT-SFDC-CustomAllDataType--c-Update">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-Asset-Update"
+                              isByCopy="true"
+                              name="MT-SFDC-Asset-Update">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-Task-Update"
+                              isByCopy="true"
+                              name="MT-SFDC-Task-Update">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>cWNBWUs6VCig4WcpCOwlUe</types1:GUID>
+      <types1:DisplayName>CDC_SFDC_Update</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-03-08T06:27:02.147Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

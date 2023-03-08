@@ -1,0 +1,305 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>duypKwKBqRi92qB-gt-4233542-2023-03-08T06:18:26.058Z::tf.xml</types1:EntryId>
+      <types1:Name>TF_FF_SFDC_Insert-1</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>geethak1</types1:CreatedBy>
+      <types1:CreationDate>2023-03-08T06:18:26Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>geethak1</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-08T06:18:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.TF_FF_SFDC_Insert-1/TF_FF_SFDC_Insert-1.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="TF_FF_SFDC_Insert"
+                   name="TF_FF_SFDC_Insert-1"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Asset_Insert" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:MT-SFDC-Asset-Insert</option>
+                  </options>
+               </field>
+               <field description="" name="Contract_Insert" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:MT-SFDC-Contract-Insert</option>
+                  </options>
+               </field>
+               <field description="" name="CustomAllDataType__c_Insert" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MT-SFDC-CustomAllDataType--c-Insert</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="j3wfjy2l" targetId="kx7knc5m"/>
+               </start>
+               <eventContainer id="kx7knc5m">
+                  <service id="j3wfjy2k">
+                     <title>Asset_Insert</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_Asset_Insert</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">dj9OkRXdpEFhY46UNvPwcA</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="MT-SFDC-Asset-Insert">temp.Asset_Insert</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Asset_Insert/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Asset_Insert/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="j3wfjy2t" targetId="kx7knc78"/>
+                  <events>
+                     <catch faultField="temp.Asset_Insert/fault"
+                            id="kx7knc5k"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Asset_Insert/fault"
+                            id="kx7knc5l"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="kx7knc78">
+                  <service id="j3wfjy2s">
+                     <title>Contract_Insert</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_Contract_Insert</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">3NUderKVjaOcpi4QsKW3SQ</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="MT-SFDC-Contract-Insert">temp.Contract_Insert</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Contract_Insert/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Contract_Insert/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="kx7knc8d" targetId="kx7knc8i"/>
+                  <events>
+                     <catch faultField="temp.Contract_Insert/fault"
+                            id="kx7knc76"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Contract_Insert/fault"
+                            id="kx7knc77"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="kx7knc8i">
+                  <service id="kx7knc8c">
+                     <title>CustomAllDataType__c_Insert</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">MT_SFDC_CustomAllDataType__c_Insert</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">63xaGGpbg4xcDoC3reRF6F</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="MT-SFDC-CustomAllDataType--c-Insert">temp.CustomAllDataType__c_Insert</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Task_Status">Task Status</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.CustomAllDataType__c_Insert/output/End_Time">End Time</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/Error_Message">Error Message</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field"
+                                   to="temp.CustomAllDataType__c_Insert/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="kx7knc8e" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.CustomAllDataType__c_Insert/fault"
+                            id="kx7knc8g"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.CustomAllDataType__c_Insert/fault"
+                            id="kx7knc8h"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-Asset-Insert"
+                              isByCopy="true"
+                              name="MT-SFDC-Asset-Insert">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-Contract-Insert"
+                              isByCopy="true"
+                              name="MT-SFDC-Contract-Insert">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MT-SFDC-CustomAllDataType--c-Insert"
+                              isByCopy="true"
+                              name="MT-SFDC-CustomAllDataType--c-Insert">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>liUyGZlQNSMfZoMPUFR966</types1:GUID>
+      <types1:DisplayName>TF_FF_SFDC_Insert</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-03-08T06:27:02.025Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
